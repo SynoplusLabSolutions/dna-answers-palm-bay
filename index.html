@@ -42,7 +42,13 @@ const prices={
 };
 function show(n){document.querySelectorAll('.wizardStep').forEach(x=>x.classList.toggle('active',x.dataset.step==n));document.getElementById('progress').textContent='Step '+n+' of 3'}
 document.querySelectorAll('[data-rel]').forEach(b=>b.onclick=()=>{rel=b.dataset.rel;show(2)});
-document.querySelectorAll('[data-use]').forEach(b=>b.onclick=()=>{use=b.dataset.use;const box=document.getElementById('configChoices');box.innerHTML='';(prices[use+'|'+rel]||[]).forEach(([name,regular,event])=>{const x=document.createElement('button');x.className='choice';x.innerHTML='<strong>'+name+'</strong><span>Select this participant configuration</span>';x.onclick=()=>{document.querySelectorAll('#configChoices .choice').forEach(y=>y.classList.remove('active'));x.classList.add('active');document.getElementById('selectionName').textContent=use+' '+rel+' — '+name;document.getElementById('regularPrice').textContent='</html>+regular;document.getElementById('eventPrice').textContent='</html>+event+' event price';document.getElementById('pricePanel').style.display='block'};box.appendChild(x)});document.getElementById('pricePanel').style.display='none';show(3)});
+document.querySelectorAll('[data-use]').forEach(b=>b.onclick=()=>{use=b.dataset.use;const box=document.getElementById('configChoices');box.innerHTML='';(prices[use+'|'+rel]||[]).forEach(([name,regular,event])=>{const x=document.createElement('button');x.className='choice';x.innerHTML='<strong>'+name+'</strong><span>Select this participant configuration</span>';x.onclick=()=>{document.querySelectorAll('#configChoices .choice').forEach(y=>y.classList.remove('active'));x.classList.add('active');document.getElementById('selectionName').textContent=use+' '+rel+' — '+name;document.getElementById('regularPrice').textContent='document.getElementById('pricePanel').style.display='block'};box.appendChild(x)});document.getElementById('pricePanel').style.display='none';show(3)});
+document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>show(b.dataset.back));
+})();
+</script></body></html>+regular;document.getElementById('eventPrice').textContent='document.getElementById('pricePanel').style.display='block'};box.appendChild(x)});document.getElementById('pricePanel').style.display='none';show(3)});
+document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>show(b.dataset.back));
+})();
+</script></body></html>+event+' event price';document.getElementById('pricePanel').style.display='block'};box.appendChild(x)});document.getElementById('pricePanel').style.display='none';show(3)});
 document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>show(b.dataset.back));
 })();
 </script></body></html>
