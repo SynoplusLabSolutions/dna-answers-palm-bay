@@ -30,20 +30,42 @@
 <section class="section faq" id="faq"><div class="wrap"><div class="center"><h2>Frequently Asked Questions</h2><p class="intro">The essentials before you reserve.</p></div><div class="faqGrid"><details><summary>Does DNA collection hurt?</summary><p>No. Relationship DNA testing generally uses a simple cheek swab collected from inside the mouth.</p></details><details><summary>How long does the appointment take?</summary><p>Your visit includes check-in, paperwork, payment and specimen collection. Final appointment timing will be listed in your confirmation.</p></details><details><summary>Who needs to attend?</summary><p>That depends on the relationship test selected. Contact Synoplus before booking if you are unsure who should participate.</p></details><details><summary>When will I receive my results?</summary><p>Standard results typically arrive 3–5 business days after laboratory receipt, depending on the selected service.</p></details><details><summary>Can I use my results in court?</summary><p>If results may be used for a legal matter, select a legal chain-of-custody collection. Requirements can vary by proceeding.</p></details><details><summary>Is my deposit refundable?</summary><p>The reservation deposit is nonrefundable, subject to the disclosed reservation terms presented before payment.</p></details><details><summary>Can I test without the alleged father?</summary><p>Other relationship tests may be possible depending on which relatives are available. Contact us so we can help identify the appropriate test.</p></details><details><summary>What if I don't know which test I need?</summary><p>Contact Synoplus before reserving and we'll help you understand which relationship test fits your situation.</p></details></div></div></section>
 <section class="final"><div class="wrap"><h2>Some Questions<br>Deserve Clear Answers.</h2><p>Professional relationship DNA testing, available locally in Palm Bay.</p><a class="btn" href="#choose-test">RESERVE MY APPOINTMENT →</a><p class="micro" style="color:#dce8ed">Appointments are limited for this event.</p></div></section></main>
 <footer class="footer"><div class="wrap footerInner"><div><strong>SYNOPLUS LAB SOLUTIONS</strong><br>DNA answers that bring clarity.</div><div>© 2026 Synoplus Lab Solutions • Palm Bay, Florida</div></div></footer><div class="stickyMobile"><span>DNA ANSWERS: PALM BAY • OCT 31</span><a class="btn" href="#choose-test">RESERVE</a></div><script>
-(()=>{let rel='',use='';
-const prices={
-'Informational|Paternity':[ ['Father + Child',339,289],['Mother + Father + Child',419,369] ],
-'Legal|Paternity':[ ['Father + Child',439,389],['Mother + Father + Child',499,449] ],
-'Informational|Maternity':[ ['Mother + Child',339,289] ],'Legal|Maternity':[ ['Mother + Child',439,389] ],
-'Informational|Siblingship':[ ['Sibling participants',349,299] ],'Legal|Siblingship':[ ['Sibling participants',449,399] ],
-'Informational|Avuncular':[ ['Aunt/Uncle + Niece/Nephew',339,289] ],'Legal|Avuncular':[ ['Aunt/Uncle + Niece/Nephew',439,389] ],
-'Informational|Grandparentage':[ ['One grandparent + mother',399,349],['One grandparent, no mother',339,289],['Two grandparents + mother',509,459],['Two grandparents, no mother',459,409] ],
-'Legal|Grandparentage':[ ['One grandparent + mother',499,449],['One grandparent, no mother',439,389],['Two grandparents + mother',609,559],['Two grandparents, no mother',559,509] ]
+(function(){
+var rel="", use="";
+var prices={
+"Informational|Paternity":[["Father + Child",339,289],["Mother + Father + Child",419,369]],
+"Legal|Paternity":[["Father + Child",439,389],["Mother + Father + Child",499,449]],
+"Informational|Maternity":[["Mother + Child",339,289]],"Legal|Maternity":[["Mother + Child",439,389]],
+"Informational|Siblingship":[["Sibling participants",349,299]],"Legal|Siblingship":[["Sibling participants",449,399]],
+"Informational|Avuncular":[["Aunt/Uncle + Niece/Nephew",339,289]],"Legal|Avuncular":[["Aunt/Uncle + Niece/Nephew",439,389]],
+"Informational|Grandparentage":[["One grandparent + mother",399,349],["One grandparent, no mother",339,289],["Two grandparents + mother",509,459],["Two grandparents, no mother",459,409]],
+"Legal|Grandparentage":[["One grandparent + mother",499,449],["One grandparent, no mother",439,389],["Two grandparents + mother",609,559],["Two grandparents, no mother",559,509]]
 };
-function show(n){document.querySelectorAll('.wizardStep').forEach(x=>x.classList.toggle('active',x.dataset.step==n));document.getElementById('progress').textContent='Step '+n+' of 3'}
-document.querySelectorAll('[data-rel]').forEach(b=>b.onclick=()=>{rel=b.dataset.rel;show(2)});
-document.querySelectorAll('[data-use]').forEach(b=>b.onclick=()=>{use=b.dataset.use;const box=document.getElementById('configChoices');box.innerHTML='';(prices[use+'|'+rel]||[]).forEach(([name,regular,event])=>{const x=document.createElement('button');x.className='choice';x.innerHTML='<strong>'+name+'</strong><span>Select this participant configuration</span>';x.onclick=()=>{document.querySelectorAll('#configChoices .choice').forEach(y=>y.classList.remove('active'));x.classList.add('active');document.getElementById('selectionName').textContent=use+' '+rel+' — '+name;document.getElementById('regularPrice').textContent='document.getElementById('pricePanel').style.display='block'};box.appendChild(x)});document.getElementById('pricePanel').style.display='none';show(3)});
-document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>show(b.dataset.back));
+function show(n){
+ document.querySelectorAll(".wizardStep").forEach(function(x){x.classList.toggle("active",x.getAttribute("data-step")==String(n));});
+ document.getElementById("progress").textContent="Step "+n+" of 3";
+}
+document.querySelectorAll("[data-rel]").forEach(function(b){b.addEventListener("click",function(){rel=b.getAttribute("data-rel");show(2);});});
+document.querySelectorAll("[data-use]").forEach(function(b){b.addEventListener("click",function(){
+ use=b.getAttribute("data-use");
+ var box=document.getElementById("configChoices"); box.innerHTML="";
+ (prices[use+"|"+rel]||[]).forEach(function(item){
+  var name=item[0], regular=item[1], eventPrice=item[2];
+  var x=document.createElement("button"); x.type="button"; x.className="choice";
+  x.innerHTML="<strong>"+name+"</strong><span>Select this participant configuration</span>";
+  x.addEventListener("click",function(){
+   document.querySelectorAll("#configChoices .choice").forEach(function(y){y.classList.remove("active");});
+   x.classList.add("active");
+   document.getElementById("selectionName").textContent=use+" "+rel+" — "+name;
+   document.getElementById("regularPrice").textContent="$"+regular;
+   document.getElementById("eventPrice").textContent="$"+eventPrice+" event price";
+   document.getElementById("pricePanel").style.display="block";
+  });
+  box.appendChild(x);
+ });
+ document.getElementById("pricePanel").style.display="none"; show(3);
+});});
+document.querySelectorAll("[data-back]").forEach(function(b){b.addEventListener("click",function(){show(b.getAttribute("data-back"));});});
 })();
 </script></body></html>+regular;document.getElementById('eventPrice').textContent='document.getElementById('pricePanel').style.display='block'};box.appendChild(x)});document.getElementById('pricePanel').style.display='none';show(3)});
 document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>show(b.dataset.back));
